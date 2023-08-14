@@ -5,7 +5,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css';
-import App from './App';
+// import App from './App';
+import SimpleWelcome from './components/SimpleWelcome';
 // import reportWebVitals from './reportWebVitals';
 // import { FlashDataProvider } from './contexts/flashDataContext';
 
@@ -23,7 +24,7 @@ import App from './App';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <SimpleWelcome />,
     // loader: rootLoader,
     // children: [
     //   {

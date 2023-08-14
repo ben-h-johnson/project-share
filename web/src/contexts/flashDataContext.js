@@ -52,7 +52,7 @@ export function FlashDataProvider({ children }) {
   }, [])
 
   return (
-    <FlashContext.Provider value={flashData}>
+    <FlashContext.Provider value={flashData, shuffleDeck, loadDeckFromShortHandFile}>
       {children}
     </FlashContext.Provider>
   )

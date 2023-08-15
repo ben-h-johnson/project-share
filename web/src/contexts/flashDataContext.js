@@ -1,5 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
 
+//
+// Note this context is currently unused.
+// It's purpose was to load and maintain the data from a short hand txt file
+// to be used by a simple flashcard component for study purposes.
+//
+// Using a context/provider model is preferable to loading the data within the component
+// because it minimizes data transfer (and therefore costs).
+//
+// React Router v6 provides the loader and new ways to achieve similar results.
+// This needs updating for compatability with the new framework.
+//
+
 //PlaceHolder / Help Card
 const hintCard = {
   'front':'Flash Cards\nHint: *Space* to advance. *X* to add the current card to the review stack. *R* to reload and shuffle',
@@ -17,13 +29,13 @@ export function FlashDataProvider({ children }) {
 
   //Durstenfeld Shuffle the deck
   const shuffleDeck = () => {
-    if(this.flashData['deck'].length>1) {
-      let tempData = {...this.flashData}
+    if(flashData['deck'].length>1) {
+      let tempData = {...flashData}
       for (let i = tempData['deck'].length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
           [tempData['deck'][i], tempData['deck'][j]] = [tempData['deck'][j], tempData['deck'][i]];
       }
-      this.setFlashData(tempData)
+      setFlashData(tempData)
     }
   }
 
@@ -41,7 +53,7 @@ export function FlashDataProvider({ children }) {
       })
       outData['deck'] = deckData.split('\n').map((deckLine) => deckLine.split(' > '))
       outData['review'] = []
-      this.setFlashData(outData)
+      setFlashData(outData)
     } catch (error) {
       console.log(error)
     }
@@ -52,7 +64,7 @@ export function FlashDataProvider({ children }) {
   }, [])
 
   return (
-    <FlashContext.Provider value={flashData, shuffleDeck, loadDeckFromShortHandFile}>
+    <FlashContext.Provider value={{data:flashData, shuffle:shuffleDeck, load:loadDeckFromShortHandFile}}>
       {children}
     </FlashContext.Provider>
   )

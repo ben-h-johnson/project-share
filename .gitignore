@@ -1,2 +1,7 @@
 /data
 .DS_Store
+
+
+# Images
+*.png
+*.jpg

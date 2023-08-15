@@ -9,9 +9,9 @@ const getNestedHeadings = (headingElements) => {
   headingElements.forEach((heading, index) => {
     const { innerText: title, id } = heading;
 
-    if (heading.nodeName === "H2") {
+    if (heading.nodeName === "H4") {
       nestedHeadings.push({ id, title, items: [] });
-    } else if (heading.nodeName === "H3" && nestedHeadings.length > 0) {
+    } else if (heading.nodeName === "H5" && nestedHeadings.length > 0) {
       nestedHeadings[nestedHeadings.length - 1].items.push({
         id,
         title,
@@ -28,7 +28,7 @@ const useHeadingsData = () => {
 
   useEffect(() => {
     const headingElements = Array.from(
-      document.querySelectorAll("h2, h3")
+      document.querySelectorAll("h4, h5")
     );
 
     const newNestedHeadings = getNestedHeadings(headingElements);

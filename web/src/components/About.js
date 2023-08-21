@@ -1,3 +1,6 @@
+// TODO:
+// - move ToC to drawer or other sticky nav component to scroll with text
+
 import TableOfContents from "./TableOfContents";
 import Grid from '@mui/material/Unstable_Grid2';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
